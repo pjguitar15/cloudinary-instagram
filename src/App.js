@@ -3,7 +3,7 @@ import Home from './components/Home.jsx'
 import UploadForm from './components/UploadForm.jsx'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { Container } from 'react-bootstrap'
-import context from './context'
+import Context from './Context'
 const App = () => {
   return (
     <Router>
