@@ -22,36 +22,38 @@ const UploadForm = () => {
   }
 
   const submitHandler = () => {
-    if (!userRef.current.value || !captionRef.current.value)
+    if (!userRef.current.value || !captionRef.current.value) {
       alert('Please fill up all fields')
-    setLoading(true)
-    // submit to cloudinary
-    const formData = new FormData()
-    formData.append('file', selectedImage)
-    formData.append('upload_preset', 'mqoqh1bj')
-    Axios.post(
-      'https://api.cloudinary.com/v1_1/da9vubstw/image/upload',
-      formData
-    )
-      .then(res => {
-        setData([
-          ...data,
-          {
+    } else {
+      setLoading(true)
+      // submit to cloudinary
+      const formData = new FormData()
+      formData.append('file', selectedImage)
+      formData.append('upload_preset', 'mqoqh1bj')
+      Axios.post(
+        'https://api.cloudinary.com/v1_1/da9vubstw/image/upload',
+        formData
+      )
+        .then(res => {
+          setData([
+            ...data,
+            {
+              imageUrl: res.data.url,
+              user: userRef.current.value,
+              caption: captionRef.current.value
+            }
+          ])
+          Axios.post('https://cloudinary-instagramm.herokuapp.com/api/post', {
             imageUrl: res.data.url,
             user: userRef.current.value,
             caption: captionRef.current.value
-          }
-        ])
-        Axios.post('https://cloudinary-instagramm.herokuapp.com/api/post', {
-          imageUrl: res.data.url,
-          user: userRef.current.value,
-          caption: captionRef.current.value
+          })
         })
-      })
-      .then(() => {
-        setLoading(false)
-        history.push('/')
-      })
+        .then(() => {
+          setLoading(false)
+          history.push('/')
+        })
+    }
   }
 
   return (
