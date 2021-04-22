@@ -24,6 +24,8 @@ const UploadForm = () => {
   const submitHandler = () => {
     if (!userRef.current.value || !captionRef.current.value) {
       alert('Please fill up all fields')
+    } else if (!selectedImage) {
+      alert('Please select an image')
     } else {
       setLoading(true)
       // submit to cloudinary
