@@ -30,7 +30,7 @@ const UploadForm = () => {
       formData
     )
       .then(res => {
-        Axios.post('http://localhost:3001/api/post', {
+        Axios.post('https://cloudinary-instagramm.herokuapp.com/api/post', {
           imageUrl: res.data.url,
           user: userRef.current.value,
           caption: captionRef.current.value

@@ -10,7 +10,7 @@ const Home = () => {
   const loadingItems = [1, 2, 3, 4, 5, 6, 7, 8, 9]
   useEffect(() => {
     setLoading(true)
-    Axios.get('http://localhost:3001/api/get')
+    Axios.get('https://cloudinary-instagramm.herokuapp.com/api/get')
       .then(res => setData(res.data))
       .then(() => setLoading(false))
   }, [])
