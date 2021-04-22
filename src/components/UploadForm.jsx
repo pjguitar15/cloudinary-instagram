@@ -48,7 +48,7 @@ const UploadForm = () => {
       {loading && <Alert variant='warning col-6 mx-auto'>Uploading...</Alert>}
 
       <input onChange={onChangeHandler} type='file' />
-      <div className='mt-3 p-1 col-6 mx-auto'>
+      <div className='mt-3 p-1 col-lg-6 col-md-10 col-xs-12 mx-auto'>
         <input
           ref={userRef}
           placeholder='Enter name'

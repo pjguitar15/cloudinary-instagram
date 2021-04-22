@@ -13,7 +13,7 @@ const Home = () => {
     Axios.get('https://cloudinary-instagramm.herokuapp.com/api/get')
       .then(res => setData(res.data))
       .then(() => setLoading(false))
-  }, [])
+  }, [data])
   return (
     <div className='py-5'>
       <h1>Instagram</h1>
