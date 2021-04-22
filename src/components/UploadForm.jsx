@@ -1,11 +1,13 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useContext } from 'react'
 import Axios from 'axios'
 import { Button, Alert } from 'react-bootstrap'
 import { useHistory } from 'react-router-dom'
+import { Data } from '../context'
 
 const UploadForm = () => {
   const [loading, setLoading] = useState(false)
   const [selectedImage, setSelectedImage] = useState({})
+  const [data, setData] = useContext(Data)
   const userRef = useRef()
   const captionRef = useRef()
   const history = useHistory()
@@ -37,6 +39,14 @@ const UploadForm = () => {
         })
       })
       .then(() => {
+        setData([
+          ...data,
+          {
+            imageUrl: res.data.url,
+            user: userRef.current.value,
+            caption: captionRef.current.value
+          }
+        ])
         setLoading(false)
         history.push('/')
       })

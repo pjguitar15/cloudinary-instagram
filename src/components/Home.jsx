@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import { Data } from '../context'
 import { Button, Row, Col } from 'react-bootstrap'
 import Axios from 'axios'
 import { useHistory } from 'react-router-dom'
 
 const Home = () => {
-  const [data, setData] = useState([])
+  const [data, setData] = useContext(Data)
   const [loading, setLoading] = useState(false)
   const history = useHistory()
   const loadingItems = [1, 2, 3, 4, 5, 6, 7, 8, 9]
@@ -13,7 +14,7 @@ const Home = () => {
     Axios.get('https://cloudinary-instagramm.herokuapp.com/api/get')
       .then(res => setData(res.data))
       .then(() => setLoading(false))
-  }, [data])
+  }, [])
   return (
     <div className='py-5'>
       <h1>Instagram</h1>
