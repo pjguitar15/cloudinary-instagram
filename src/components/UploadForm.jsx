@@ -32,13 +32,6 @@ const UploadForm = () => {
       formData
     )
       .then(res => {
-        Axios.post('https://cloudinary-instagramm.herokuapp.com/api/post', {
-          imageUrl: res.data.url,
-          user: userRef.current.value,
-          caption: captionRef.current.value
-        })
-      })
-      .then(() => {
         setData([
           ...data,
           {
@@ -47,6 +40,13 @@ const UploadForm = () => {
             caption: captionRef.current.value
           }
         ])
+        Axios.post('https://cloudinary-instagramm.herokuapp.com/api/post', {
+          imageUrl: res.data.url,
+          user: userRef.current.value,
+          caption: captionRef.current.value
+        })
+      })
+      .then(() => {
         setLoading(false)
         history.push('/')
       })
