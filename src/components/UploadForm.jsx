@@ -22,6 +22,8 @@ const UploadForm = () => {
   }
 
   const submitHandler = () => {
+    if (!userRef.current.value || !captionRef.current.value)
+      alert('Please fill up all fields')
     setLoading(true)
     // submit to cloudinary
     const formData = new FormData()
