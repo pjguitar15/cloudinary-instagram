@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { Data } from '../Context'
+import { Data } from '../ContextProvider'
 import { Button, Row, Col } from 'react-bootstrap'
 import Axios from 'axios'
 import { useHistory } from 'react-router-dom'

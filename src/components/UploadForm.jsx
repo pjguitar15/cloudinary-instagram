@@ -2,7 +2,7 @@ import React, { useState, useRef, useContext } from 'react'
 import Axios from 'axios'
 import { Button, Alert } from 'react-bootstrap'
 import { useHistory } from 'react-router-dom'
-import { Data } from '../Context'
+import { Data } from '../ContextProvider'
 
 const UploadForm = () => {
   const [loading, setLoading] = useState(false)
